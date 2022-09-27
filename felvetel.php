@@ -41,7 +41,18 @@
         } else if (!in_array($_POST['uzemanyag'], array_keys($uzemanyag_tipusok))) {
             $hiba .= "Üzemanyag típust a legördülő menüből válassza ki. ";
         }
-        echo $hiba;
+        ?>
+        <?php if ($hiba == ""): ?>
+            <?php 
+            $file = fopen("autok.csv", "a");
+            $sor = implode(";", $_POST) . PHP_EOL;
+            fwrite($file, $sor);
+            ?>
+            <p>Sikeres felvétel</p>
+        <?php else: ?>
+            <p><?php echo $hiba ?></p>
+        <?php endif; ?>
+    <?php
     }
     ?>
     <h1>Autók felvétele</h1>
