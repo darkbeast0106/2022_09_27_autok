@@ -44,7 +44,7 @@ if (isset($_POST) && !empty($_POST)) {
 }
 ?>
 <h1>Autók felvétele</h1>
-<form action="felvetel.php" method="post" name="auto_felvetel" onsubmit="return validalas();">
+<form action="index.php?oldal=felvetel" method="post" name="auto_felvetel" onsubmit="return validalas();">
     <div class="mb-3">
         <label for="rendszam_input">Rendszám</label>
         <input class="form-control" type="text" id="rendszam_input" name="rendszam" placeholder="Rendszám" required>
