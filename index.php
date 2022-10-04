@@ -20,10 +20,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="index.php">Autók listázása</a>
+                        <a class="nav-link" aria-current="page" href="index.php?oldal=listaz">Autók listázása</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="felvetel.php">Autó felvétele</a>
+                        <a class="nav-link" href="index.php?oldal=felvetel">Autó felvétele</a>
                     </li>
                 </ul>
             </div>
@@ -32,7 +32,16 @@
     <main class="container">
         <?php 
         require_once "uzemanyag_tipusok.php";
-        include_once "listaz.php";
+        if (!isset($_GET['oldal'])) {
+            include_once "listaz.php";
+        } else {
+            if (file_exists($_GET['oldal'] . ".php")) {
+                include_once $_GET['oldal'] . ".php";
+            } else {
+                http_response_code(404);
+                include_once "404.html";
+            }
+        }
         ?>
     </main>
 </body>
