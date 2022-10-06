@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.php">Autók</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,17 +20,17 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="index.php?oldal=listaz">Autók listázása</a>
+                        <a id="nav_listaz" class="nav-link" aria-current="page" href="index.php?oldal=listaz">Autók listázása</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php?oldal=felvetel">Autó felvétele</a>
+                        <a id="nav_felvetel" class="nav-link" href="index.php?oldal=felvetel">Autó felvétele</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
     <main class="container">
-        <?php 
+        <?php
         require_once "uzemanyag_tipusok.php";
         if (!isset($_GET['oldal'])) {
             include_once "listaz.php";
@@ -44,6 +44,17 @@
         }
         ?>
     </main>
+
+    <script>
+        const oldal = "<?php echo isset($_GET['oldal']) ? $_GET['oldal'] : "" ?>";
+        if (oldal.length > 0) {
+            const navLink = document.getElementById('nav_' + oldal);
+            navLink.classList.add('active');
+        } else {
+            const navLink = document.getElementById('nav_listaz');
+            navLink.classList.add('active');
+        }
+    </script>
 </body>
 
 </html>
