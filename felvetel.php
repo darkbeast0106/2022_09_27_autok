@@ -1,3 +1,7 @@
+<?php 
+require_once "adatbazis.php";
+ ?>
+
 <script src="validalas.js"></script>
 <?php
 if (isset($_POST) && !empty($_POST)) {
@@ -26,9 +30,8 @@ if (isset($_POST) && !empty($_POST)) {
 ?>
     <?php if ($hiba == "") : ?>
         <?php
-        $file = fopen("autok.csv", "a");
-        $sor = implode(";", $_POST) . PHP_EOL;
-        fwrite($file, $sor);
+        $db = new Adatbazis();
+        $db->auto_felvetel($_POST['rendszam'], $_POST['marka'], $_POST['modell'], $_POST['gyartas_eve'], $_POST['uzemanyag']);
         ?>
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             Sikeres felvétel.

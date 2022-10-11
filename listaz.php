@@ -11,23 +11,20 @@
     </thead>
     <tbody>
         <?php
-        $file = fopen("autok.csv", "r");
-        $i = 0;
+        require_once "adatbazis.php";
+        $db = new Adatbazis();
+        $autok = $db->list_autok();
         ?>
-        <?php while ($sor = fgets($file)) : ?>
-            <?php
-            $i++;
-            $adatok = explode(';', trim($sor));
-            ?>
+        <?php foreach ($autok as $auto): ?>
             <tr>
-                <td><?php echo $i ?></td>
-                <td><?php echo $adatok[0] ?></td>
-                <td><?php echo $adatok[1] ?></td>
-                <td><?php echo $adatok[2] ?></td>
-                <td><?php echo $adatok[3] ?></td>
-                <td><?php echo $uzemanyag_tipusok[$adatok[4]]; ?></td>
+                <td><?php echo $auto['id'] ?></td>
+                <td><?php echo $auto['rendszam'] ?></td>
+                <td><?php echo $auto['marka'] ?></td>
+                <td><?php echo $auto['modell'] ?></td>
+                <td><?php echo $auto['gyartas_eve'] ?></td>
+                <td><?php echo $uzemanyag_tipusok[$auto['uzemanyag_tipus']]; ?></td>
             </tr>
-        <?php endwhile; ?>
+        <?php endforeach; ?>
     </tbody>
     <tfoot>
         <tr>

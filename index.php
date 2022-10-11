@@ -44,6 +44,7 @@
     <main class="container">
         <?php
         require_once "uzemanyag_tipusok.php";
+        require_once "adatbazis.php";
         if (!isset($_GET['oldal'])) {
             include_once "listaz.php";
         } else {
