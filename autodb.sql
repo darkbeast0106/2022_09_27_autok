@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2022. Okt 11. 18:23
+-- Létrehozás ideje: 2022. Okt 18. 18:23
 -- Kiszolgáló verziója: 10.4.24-MariaDB
 -- PHP verzió: 8.1.6
 
@@ -36,6 +36,18 @@ CREATE TABLE `autok` (
   `uzemanyag_tipus` enum('benzin','gazolaj','elektromos','hibrid') COLLATE utf8_hungarian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `felhasznalo`
+--
+
+CREATE TABLE `felhasznalo` (
+  `id` int(11) NOT NULL,
+  `felhasznalonev` varchar(50) NOT NULL,
+  `jelszo` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 --
 -- Indexek a kiírt táblákhoz
 --
@@ -48,6 +60,13 @@ ALTER TABLE `autok`
   ADD UNIQUE KEY `rendszam` (`rendszam`);
 
 --
+-- A tábla indexei `felhasznalo`
+--
+ALTER TABLE `felhasznalo`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `felhasznalonev` (`felhasznalonev`);
+
+--
 -- A kiírt táblák AUTO_INCREMENT értéke
 --
 
@@ -55,6 +74,12 @@ ALTER TABLE `autok`
 -- AUTO_INCREMENT a táblához `autok`
 --
 ALTER TABLE `autok`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT a táblához `felhasznalo`
+--
+ALTER TABLE `felhasznalo`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 

@@ -34,9 +34,25 @@
                     <li class="nav-item">
                         <a id="nav_listaz" class="nav-link" aria-current="page" href="index.php?oldal=listaz">Autók listázása</a>
                     </li>
+                    <?php if (isset($_SESSION['felhasznalo'])) : ?>
                     <li class="nav-item">
                         <a id="nav_felvetel" class="nav-link" href="index.php?oldal=felvetel">Autó felvétele</a>
                     </li>
+                    <?php endif; ?>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <?php if (isset($_SESSION['felhasznalo'])) : ?>
+                        <li class="nav-item">
+                            <a id="nav_kijelentkezes" class="nav-link" aria-current="page" href="index.php?oldal=kijelentkezes">Kijelentkezés</a>
+                        </li>
+                    <?php else : ?>
+                        <li class="nav-item">
+                            <a id="nav_regisztracio" class="nav-link" aria-current="page" href="index.php?oldal=regisztracio">Regisztráció</a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="nav_bejelentkezes" class="nav-link" href="index.php?oldal=bejelentkezes">Bejelentkezés</a>
+                        </li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>

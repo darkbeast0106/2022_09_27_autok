@@ -1,4 +1,8 @@
 <?php
+if (!isset($_SESSION['felhasznalo'])) {
+    die('Az oldal megtekintéséhez jelentkezz be!');
+}
+
 require_once "./models/uzemanyag_tipusok.php";
 $hiba = "";
 $siker = false;

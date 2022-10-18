@@ -1,4 +1,5 @@
 <?php
+session_start();
 $oldal = "";
 if (!isset($_GET['oldal'])) {
     $oldal = "controllers/listaz.php";
