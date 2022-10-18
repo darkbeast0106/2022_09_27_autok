@@ -7,9 +7,9 @@ if ($_SERVER['REQUEST_METHOD'] != "POST") {
     die();
 }
 $message = "";
-require_once "../uzemanyag_tipusok.php";
-require_once "../adatbazis.php";
-$db = new Adatbazis();
+require_once "../models/uzemanyag_tipusok.php";
+require_once "../models/auto_model.php";
+$db = new Auto_model();
 $json = file_get_contents("php://input");
 $post = json_decode($json, true);
 

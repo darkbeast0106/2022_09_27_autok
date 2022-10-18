@@ -10,11 +10,6 @@
         </tr>
     </thead>
     <tbody>
-        <?php
-        require_once "adatbazis.php";
-        $db = new Adatbazis();
-        $autok = $db->list_autok();
-        ?>
         <?php foreach ($autok as $auto): ?>
             <tr>
                 <td><?php echo $auto['id'] ?></td>

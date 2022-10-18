@@ -1,5 +1,5 @@
 <?php 
-class Adatbazis {
+class Auto_model {
     private $conn;
 
     public function __construct() {
