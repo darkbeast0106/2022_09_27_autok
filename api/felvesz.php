@@ -1,5 +1,12 @@
 <?php
 header("Content-Type: application/json");
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: *");
+header("Access-Control-Allow-Methods: OPTIONS, POST");
+
+if ($_SERVER['REQUEST_METHOD'] == "OPTIONS") {
+    die();
+}
 
 if ($_SERVER['REQUEST_METHOD'] != "POST") {
     http_response_code(405);
